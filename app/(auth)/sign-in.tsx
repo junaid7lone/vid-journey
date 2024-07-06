@@ -3,7 +3,6 @@ import {
   Alert,
   Image,
   ScrollView,
-  StyleSheet,
   Text,
   View,
 } from "react-native";
@@ -13,13 +12,14 @@ import { images } from "../../constants";
 import FormField from "@/components/FormField";
 import CustomButton from "@/components/CustomButton";
 import { Link, router } from "expo-router";
-import { signIn } from "@/lib/appwrite";
+import { getCurrentUser, signIn } from "@/lib/appwrite";
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 const SignIn = () => {
+  const { setUser, setisLoggedIn } = useGlobalContext();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const submit = async () => {
     if (!email || !password) {
@@ -30,10 +30,12 @@ const SignIn = () => {
     setIsSubmitting(true);
 
     try {
-      const user = await signIn({ email, password });
-      if (user) {
-        router.push("/");
-      }
+      await signIn({ email, password });
+      const result = await getCurrentUser();
+      setUser(result);
+      setisLoggedIn(true);
+      Alert.alert("Success", "User signed in successfully");
+      router.replace("/home");
     } catch (error) {
       Alert.alert("Error:", error.message);
     } finally {
