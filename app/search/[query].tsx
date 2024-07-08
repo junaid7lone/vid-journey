@@ -16,15 +16,14 @@ const Search = () => {
     refetch();
   }, [query]);
 
-  console.log("posts--");
-  console.log(posts);
-
   return (
     <SafeAreaView className="bg-primary  h-full">
       <FlatList
         data={posts}
         keyExtractor={(item) => item.$id}
-        renderItem={({ item }) => <VideoCard key={item.$id} {...item} />}
+        renderItem={({ item }) => (
+          <VideoCard key={item.$id} {...item} pageType="search" />
+        )}
         ListHeaderComponent={() => {
           return (
             <View className="my-6 px-4">

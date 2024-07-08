@@ -15,8 +15,6 @@ const SearchInput = ({ initialQuery }) => {
   const [query, setQuery] = useState(initialQuery || "");
   const pathname = usePathname();
 
-  console.log(pathname);
-
   const onSearch = () => {
     if (!query) {
       return Alert.alert(

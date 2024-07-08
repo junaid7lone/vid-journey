@@ -14,6 +14,7 @@ import CustomButton from "@/components/CustomButton";
 import { Link, router } from "expo-router";
 import { createAccount } from "@/lib/appwrite";
 import FormField from "@/components/FormField";
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 type User = {
   email: string;
@@ -25,6 +26,7 @@ interface CreateUser extends User {
 }
 
 const SignUp = () => {
+  const { setUser, setisLoggedIn } = useGlobalContext();
   const [username, setusername] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -40,6 +42,9 @@ const SignUp = () => {
 
     try {
       const newUser = await createAccount({ username, email, password });
+      setUser(newUser);
+      setisLoggedIn(true);
+      Alert.alert("Success", "You are now signed in");
     } catch (error) {
       Alert.alert("Error:", error.message);
     } finally {

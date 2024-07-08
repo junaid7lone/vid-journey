@@ -39,7 +39,9 @@ const Home = () => {
       <FlatList
         data={posts}
         keyExtractor={(item) => item.$id}
-        renderItem={({ item }) => <VideoCard key={item.$id} {...item} />}
+        renderItem={({ item }) => (
+          <VideoCard key={item.$id} {...item} pageType="home" />
+        )}
         ListHeaderComponent={() => {
           return (
             <View className="my-6 px-4 space-y-6">

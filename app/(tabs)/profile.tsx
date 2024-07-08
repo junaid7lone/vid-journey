@@ -26,7 +26,9 @@ const Profile = () => {
       <FlatList
         data={posts}
         keyExtractor={(item) => item.$id}
-        renderItem={({ item }) => <VideoCard key={item.$id} {...item} />}
+        renderItem={({ item }) => (
+          <VideoCard key={item.$id} {...item} pageType="profile" />
+        )}
         ListHeaderComponent={() => {
           return (
             <View className="w-full justify-center items-center mt-6 mb-12 px-4">

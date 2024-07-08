@@ -1,11 +1,62 @@
 import { icons } from "@/constants";
+import { useGlobalContext } from "@/context/GlobalProvider";
+import { bookmarkPost, deletePost } from "@/lib/appwrite";
 import { ResizeMode, Video } from "expo-av";
 import React, { useState } from "react";
-import { View, Image, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  Alert,
+  ActivityIndicator,
+} from "react-native";
 
 const VideoCard = (props) => {
-  const { creator, prompt, thumbnail, title, video, horizontal } = props;
+  const [updating, setUpdating] = useState(false);
+  const { user } = useGlobalContext();
+  const {
+    creator,
+    prompt,
+    thumbnail,
+    title,
+    video,
+    horizontal,
+    $id,
+    bookmarkedBy,
+    pageType,
+  } = props;
   const [play, setplay] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(
+    bookmarkedBy.includes(user.$id)
+  );
+
+  const addToBookmark = async () => {
+    try {
+      setUpdating(true);
+      await bookmarkPost({ userId: user.$id, video: props });
+      setIsBookmarked(!isBookmarked);
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Error:", error);
+    } finally {
+      setUpdating(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      setUpdating(true);
+      await deletePost($id);
+      Alert.alert("Success:", "Post deleted");
+      setIsBookmarked(true);
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Error:", error);
+    } finally {
+      setUpdating(false);
+    }
+  };
 
   return (
     <View
@@ -33,16 +84,30 @@ const VideoCard = (props) => {
               className="text-gray-100 text-xs font-pregular"
               numberOfLines={1}
             >
-              {creator.username}
+              {creator?.username || "User"}
             </Text>
           </View>
         </View>
-        <View className="pt-2">
-          <Image
-            source={icons.menu}
-            className="w-5 h-5 "
-            resizeMode="contain"
-          />
+        <View className="pt-2 mr-2">
+          {updating ? (
+            <ActivityIndicator size="small" />
+          ) : pageType === "profile" ? (
+            <TouchableOpacity onPress={handleDelete}>
+              <Image
+                source={icons.trash}
+                className="w-5 h-5 "
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={addToBookmark}>
+              <Image
+                source={isBookmarked ? icons.bookmarked : icons.bookmark}
+                className="w-5 h-5 "
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
+          )}
         </View>
       </View>
       {play ? (
