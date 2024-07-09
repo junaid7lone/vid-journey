@@ -19,7 +19,11 @@ const AuthLayout = () => {
           }}
         />
       </Stack>
-      <StatusBar backgroundColor="#161622" />
+      <StatusBar
+        style="inverted"
+        backgroundColor="#161622"
+        translucent={true}
+      />
     </>
   );
 };

@@ -34,7 +34,7 @@ const SignIn = () => {
       const result = await getCurrentUser();
       setUser(result);
       setisLoggedIn(true);
-      Alert.alert("Success", "User signed in successfully");
+      Alert.alert("Success", "You are logged in");
       router.replace("/home");
     } catch (error) {
       Alert.alert("Error:", error.message);
@@ -58,7 +58,7 @@ const SignIn = () => {
               className="w-[115px] h-[35px]"
             />
             <Text className="text-white text-2xl text-semibold mt-10 font-psemibold">
-              Login in to aora
+              Login in to Vid Journey
             </Text>
             <FormField
               title="Email"

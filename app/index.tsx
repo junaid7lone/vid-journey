@@ -31,7 +31,7 @@ export default function HomeScreen() {
           <View className="relative mt-5 ">
             <Text className="text-3xl text-white font-bold text-center">
               Discover Endless Possibilities with{" "}
-              <Text className="text-secondary-200 ">Aora</Text> !
+              <Text className="text-secondary-200 ">Vid Journey</Text> !
             </Text>
             <Image
               source={images.path}
@@ -42,7 +42,7 @@ export default function HomeScreen() {
 
           <Text className="mt-7 text-gray-100 leading-6  text-sm text-center font-pregular">
             Where Creativity meets innocation : embasrk on a journey of
-            limitless exploration with Aora
+            limitless exploration with Vid Journey
           </Text>
 
           <CustomButton
@@ -55,7 +55,11 @@ export default function HomeScreen() {
           </CustomButton>
         </View>
       </ScrollView>
-      <StatusBar style="light" backgroundColor="#161622"></StatusBar>
+      <StatusBar
+        style="inverted"
+        backgroundColor="#161622"
+        translucent={true}
+      />
     </SafeAreaView>
   );
 }

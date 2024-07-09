@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#161622"
     },
     "ios": {
       "supportsTablet": true
@@ -26,6 +26,11 @@
       ],
       "package": "com.junaidlone.vid_journey"
     },
+    "androidNavigationBar": {
+     "visible": true,
+     "barStyle": "light-content",
+     "backgroundColor": "#161622"
+   },
     "web": {
       "bundler": "metro",
       "output": "static",

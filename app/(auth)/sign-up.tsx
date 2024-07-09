@@ -67,7 +67,7 @@ const SignUp = () => {
               className="w-[115px] h-[35px]"
             />
             <Text className="text-white text-2xl text-semibold mt-10 font-psemibold">
-              Login in to aora
+              Login in to Vid Journey
             </Text>
             <FormField
               title="Username"
