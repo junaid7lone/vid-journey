@@ -2,7 +2,7 @@
 
 Vid Journey is a discovery platform for AI-generated videos and their prompts. The app allows users to explore trending and latest videos, bookmark their favorites, create posts for their own generated videos, and search by title.
 
-![Vid Journey Banner](https://example.com/banner.png) <!-- Replace with your actual banner image link -->
+![Vid Journey Banner](https://github.com/junaid7lone/vid-journey/blob/readme-assets/readme-assets/banner.png) <!-- Replace with your actual banner image link -->
 
 ## Table of Contents
 
@@ -49,13 +49,13 @@ To run Vid Journey on your local machine, follow these steps:
 
 ## Screenshots
 
-![Home Screen](https://example.com/home-screen.png) <!-- Replace with actual screenshot links -->
+![Home Screen](https://github.com/junaid7lone/vid-journey/blob/readme-assets/readme-assets/screenshot.jpg) <!-- Replace with actual screenshot links -->
 _Home Screen_
 
-![Trending Videos](https://example.com/trending-videos.png)
+![Trending Videos](https://github.com/junaid7lone/vid-journey/blob/readme-assets/readme-assets/screenshot.jpg)
 _Trending Videos_
 
-![Bookmark Feature](https://example.com/bookmark.png)
+![Bookmark Feature](https://github.com/junaid7lone/vid-journey/blob/readme-assets/readme-assets/screenshot.jpg)
 _Bookmark Feature_
 
 ## Technologies Used
